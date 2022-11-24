@@ -56,7 +56,7 @@ map("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximizati
 map("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 
 -- telescope
-map("n", "<C-space>", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+map("n", "<space>", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
 map("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory

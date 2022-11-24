@@ -4,12 +4,17 @@ NeoVim configuration with custome keybinding.
 
 ## Plugins used
 
-##### File explorer and icons
+### Plugin manager
+
+1. wbthomason/packer.nvim - Packer
+2. nvim-lua/plenary.nvim - additional functions used in many plugins
+
+### File explorer and icons
 
 1. nvim-tree
 2. nvim-web-devicons
 
-##### Essentials
+### Essentials
 
 1. lualine
 2. vim-tmux-navigator - tmux & split window navigation
@@ -17,13 +22,16 @@ NeoVim configuration with custome keybinding.
 4. tpope/vim-surround - add, delete, change surroundings
 5. vim-ReplaceWithRegister
 6. numToStr/Comment.nvim - comment using `gc`
+7. lewis6991/gitsigns.nvim - show line modifications on the left side
+8. windwp/nvim-autopairs
+9. windwp/nvim-ts-autotag
 
-##### FZF with telescope
+### FZF with telescope
 
 1. nvim-telescope/telescope-fzf-native.nvim
 2. nvim-telescope/telescope.nvim
 
-##### Formatting, linting, lsp, autocomplete
+### Formatting, linting, lsp, autocomplete
 
 1. hrsh7th/nvim-cmp - completion plugin
 2. hrsh7th/cmp-buffer - source for text in buffer
@@ -40,8 +48,9 @@ NeoVim configuration with custome keybinding.
 13. onsails/lspkind.nvim - autocompletion icons
 14. jose-elias-alvarez/null-ls.nvim - configurationg for formatters & linters
 15. jayp0521/mason-null-ls.nvim - connection between mason & null-ls
+16. tnvim-treesitter/nvim-treesitter
 
-##### Theme
+### Theme
 
 1. bluz71/vim-nightfly-guicolors
 
