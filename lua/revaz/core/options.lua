@@ -23,8 +23,18 @@ opt.background = "dark" -- colorschemes that can be light or dark will be made d
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
 -- nightfly
-vim.g.nightflyItalics = true
-vim.g.nightflyWinSeparator = 2
+-- vim.g.nightflyItalics = true
+-- vim.g.nightflyWinSeparator = 2
+
+-- gruvbox-material
+vim.g.gruvbox_material_diagnostic_text_highlight = 1
+vim.g.gruvbox_material_enable_italic = 1
+vim.g.gruvbox_material_enable_bold = 1
+vim.g.gruvbox_material_background = "hard"
+vim.g.gruvbox_material_better_performance = 1
+vim.g.gruvbox_material_ui_contrast = "high"
+vim.g.gruvbox_material_current_word = "italic"
+
 opt.fillchars = {
 	horiz = "━",
 	horizup = "┻",
