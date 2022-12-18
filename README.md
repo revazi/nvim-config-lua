@@ -33,26 +33,30 @@ NeoVim configuration with custome keybinding.
 
 ### Formatting, linting, lsp, autocomplete
 
-1. hrsh7th/nvim-cmp - completion plugin
-2. hrsh7th/cmp-buffer - source for text in buffer
-3. hrsh7th/cmp-path - source for file system paths
-4. L3MON4D3/LuaSnip - snippet engine
-5. saadparwaiz1/cmp_luasnip - for autocompletion
-6. rafamadriz/friendly-snippets - useful snippets
-7. williamboman/mason.nvim - managing lsp servers, linters & formatters
-8. williamboman/mason-lspconfig.nvim - connection between lspconfig and mason
-9. neovim/nvim-lspconfig - configure language servers
-10. hrsh7th/cmp-nvim-lsp - autocompletion
-11. glepnir/lspsaga.nvim - lsp ui
-12. jose-elias-alvarez/typescript.nvim - additional functionality for typescript server (e.g. rename file & update imports)
-13. onsails/lspkind.nvim - autocompletion icons
-14. jose-elias-alvarez/null-ls.nvim - configurationg for formatters & linters
-15. jayp0521/mason-null-ls.nvim - connection between mason & null-ls
-16. tnvim-treesitter/nvim-treesitter
+1. [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion engine plugin for neovim written in Lua.
+2. [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - source for text in buffer
+3. [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - source for file system paths
+4. [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) - snippet engine
+5. [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - for autocompletion
+6. [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - Snippets collection for a set of different programming languages for faster development.
+7. [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) - Portable package manager for Neovim that runs everywhere Neovim runs - manages lsp servers, linters, DAP(Debug Adapter Protocol) servers & formatters
+8. [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - configure language servers
+9. [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - connection between lspconfig and mason
+10. [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim's built-in language server client.
+11. [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim) - A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI.
+12. [jose-elias-alvarez/typescript.nvim](https://github.com/jose-elias-alvarez/typescript.nvim) - additional functionality for typescript server (e.g. rename file & update imports)
+13. [onsails/lspkind.nvim](https://github.com/onsails/lspkind.nvim) - This tiny plugin adds vscode-like pictograms to neovim built-in lsp
+14. [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) - Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua. - configuration for formatters & linters
+15. [jayp0521/mason-null-ls.nvim](https://github.com/jay-babu/mason-null-ls.nvim) - mason-null-ls bridges mason.nvim with the null-ls plugin - making it easier to use both plugins together.
+16. [tnvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter in Neovim and to provide some basic functionality such as highlighting based on it.
 
 ### Theme
 
 1. bluz71/vim-nightfly-guicolors
+
+### Todo
+
+1. [folke/trouble.nvim](https://github.com/folke/trouble.nvim) - A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
 
 ## Installation
 
