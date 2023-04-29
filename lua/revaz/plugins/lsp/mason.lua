@@ -26,7 +26,7 @@ mason_lspconfig.setup({
 		"html", -- html
 		"cssls", -- css
 		"tailwindcss", -- tailwind
-		"sumneko_lua", -- lua
+		"lua_ls", -- lua
 		"emmet_ls", -- css, js, ts, html
 		"dockerls", -- docker
 		"yamlls", -- yaml

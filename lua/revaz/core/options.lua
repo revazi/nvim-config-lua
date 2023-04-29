@@ -10,6 +10,15 @@ opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 
+-- no swap files
+opt.swapfile = false
+
+--  Show matching brackets/parenthesis
+opt.showmatch = true
+
+-- Find as you type search
+opt.incsearch = true
+
 -- line wrapping
 opt.wrap = false
 
