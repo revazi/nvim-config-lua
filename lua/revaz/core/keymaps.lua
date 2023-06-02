@@ -2,6 +2,7 @@
 vim.g.mapleader = ","
 local map = require("revaz.core.utils").map
 local toggleNubmer = require("revaz.core.utils").toggleNumber
+local changeBackgroundColor = require("revaz.core.utils").changeBackgroundColor
 
 ---------------------
 -- General Keymaps
@@ -20,6 +21,14 @@ map("n", "<leader>n", "", {
 	noremap = true,
 	callback = toggleNubmer,
 	desc = "Toggle line numbers: default = true",
+})
+
+-- Toggle background color
+map("n", "<leader>bg", ":call changeBackgroundColor()")
+map("n", "<leader>bg", "", {
+	noremap = true,
+	callback = changeBackgroundColor,
+	desc = "Toggle background color: default = dark",
 })
 
 -- delete single character without copying into register

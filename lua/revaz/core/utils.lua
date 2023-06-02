@@ -28,4 +28,13 @@ function M.toggleNumber()
 	end
 end
 
+function M.changeBackgroundColor()
+	local background = opt.background:get()
+	if background == "dark" then
+		opt.background = "light"
+	else
+		opt.background = "dark"
+	end
+end
+
 return M
