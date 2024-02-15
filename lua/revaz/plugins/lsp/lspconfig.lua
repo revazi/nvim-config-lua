@@ -56,6 +56,12 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+--config ruff_lsp
+-- lspconfig["ruff_lsp"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
+
 -- configure html server
 lspconfig["html"].setup({
 	capabilities = capabilities,

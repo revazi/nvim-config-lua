@@ -28,6 +28,7 @@ mason_lspconfig.setup({
 		"tailwindcss", -- tailwind
 		"lua_ls", -- lua
 		"emmet_ls", -- css, js, ts, html
+		-- "ruff_lsp", -- python
 		"dockerls", -- docker
 		"yamlls", -- yaml
 		"bashls", -- bash
@@ -46,6 +47,7 @@ mason_null_ls.setup({
 		"flake8", -- python linter
 		"black", -- python linter
 		"isort", -- python formatter
+		-- "ruff", -- python linter, formatter
 		"codespell", -- fix common misspellings
 	},
 	-- auto-install configured formatters & linters (with null-ls)
