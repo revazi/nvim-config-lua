@@ -44,6 +44,9 @@ vim.g.gruvbox_material_better_performance = 1
 vim.g.gruvbox_material_ui_contrast = "high"
 vim.g.gruvbox_material_current_word = "italic"
 
+vim.g.python3_host_prog = "/Users/rezi/.pyenv/versions/3.11.1/bin/python"
+
+
 opt.fillchars = {
 	horiz = "━",
 	horizup = "┻",
