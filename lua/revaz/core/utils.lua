@@ -32,8 +32,10 @@ function M.changeBackgroundColor()
 	local background = opt.background:get()
 	if background == "dark" then
 		opt.background = "light"
+		vim.cmd("colorscheme tokyonight-day") -- Set the light theme
 	else
 		opt.background = "dark"
+		vim.cmd("colorscheme tokyonight") -- Set the dark theme
 	end
 end
 

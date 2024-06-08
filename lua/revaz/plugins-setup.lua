@@ -45,6 +45,8 @@ return packer.startup(function(use)
 
 	use("bluz71/vim-nightfly-guicolors") -- Nightfly theme
 	use("sainnhe/gruvbox-material")
+	use("NLKNguyen/papercolor-theme") -- PaperColor theme
+	use("folke/tokyonight.nvim") -- Tokyonight theme
 
 	use("arcticicestudio/nord-vim") -- Nord theme
 

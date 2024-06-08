@@ -28,7 +28,7 @@ opt.smartcase = true
 
 -- appearance
 opt.termguicolors = true
-opt.background = "light" -- colorschemes that can be light or dark will be made dark
+opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
 -- nightfly
@@ -44,8 +44,7 @@ vim.g.gruvbox_material_better_performance = 1
 vim.g.gruvbox_material_ui_contrast = "high"
 vim.g.gruvbox_material_current_word = "italic"
 
-vim.g.python3_host_prog = "/Users/rezi/.pyenv/versions/3.11.1/bin/python"
-
+vim.g.python3_host_prog = "/Users/revaz/.pyenv/versions/3.11.1/bin/python"
 
 opt.fillchars = {
 	horiz = "━",
