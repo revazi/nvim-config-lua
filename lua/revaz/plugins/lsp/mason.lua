@@ -22,13 +22,14 @@ mason.setup()
 mason_lspconfig.setup({
 	-- list of servers for mason to install
 	ensure_installed = {
-		"tsserver", -- ts/js
+		"ts_ls", -- ts/js
 		"html", -- html
 		"cssls", -- css
 		"tailwindcss", -- tailwind
+		"ansiblels", -- ansible
 		"lua_ls", -- lua
 		"emmet_ls", -- css, js, ts, html
-		-- "ruff_lsp", -- python
+		"ruff", -- python
 		"dockerls", -- docker
 		"yamlls", -- yaml
 		"bashls", -- bash
@@ -44,7 +45,6 @@ mason_null_ls.setup({
 		"prettier", -- ts/js formatter
 		"stylua", -- lua formatter
 		"eslint_d", -- ts/js linter
-		"flake8", -- python linter
 		"black", -- python linter
 		"isort", -- python formatter
 		-- "ruff", -- python linter, formatter
