@@ -9,10 +9,10 @@ local changeBackgroundColor = require("revaz.core.utils").changeBackgroundColor
 -- General Keymaps
 ---------------------
 
-map("i", "jk", "<ESC>")                          -- exit insert mode
+map("i", "jk", "<ESC>") -- exit insert mode
 map("n", "<leader><CR>", ":luafile $MYVIMRC<CR>") -- reload config
-map("n", "<leader>nh", ":nohl<CR>")              -- clear search highlight
-map("n", "x", '"_x')                             -- delete without yank
+map("n", "<leader>nh", ":nohl<CR>") -- clear search highlight
+map("n", "x", '"_x') -- delete without yank
 
 -- increment/decrement
 map("n", "<leader>+", "<C-a>")
@@ -38,16 +38,16 @@ map("n", "<Right>", "<C-w>5>")
 
 -- Toggle line numbers
 map("n", "<leader>n", "", {
-  noremap = true,
-  callback = toggleNumber,
-  desc = "Toggle line numbers",
+	noremap = true,
+	callback = toggleNumber,
+	desc = "Toggle line numbers",
 })
 
 -- Toggle background color
 map("n", "<leader>bg", "", {
-  noremap = true,
-  callback = changeBackgroundColor,
-  desc = "Toggle background color",
+	noremap = true,
+	callback = changeBackgroundColor,
+	desc = "Toggle background color",
 })
 
 ---------------------
