@@ -29,11 +29,9 @@ return {
 		end
 
 		local sources = {
-			-- JS/TS formatting
 			formatting.prettier.with({
 				filetypes = { "javascript", "typescript", "json", "css", "scss", "html", "vue" },
 			}),
-
 			-- Lua
 			formatting.stylua,
 
@@ -56,6 +54,7 @@ return {
 			diagnostics.editorconfig_checker,
 			diagnostics.dotenv_linter,
 			diagnostics.ansiblelint,
+
 			code_actions.gitsigns,
 		}
 

@@ -28,6 +28,7 @@ mason_lspconfig.setup({
 		"tailwindcss", -- tailwind
 		"ansiblels", -- ansible
 		"lua_ls", -- lua
+    "eslint", -- ts/js
 		"emmet_ls", -- css, js, ts, html
 		"ruff", -- python
 		"dockerls", -- docker
@@ -44,10 +45,8 @@ mason_null_ls.setup({
 	ensure_installed = {
 		"prettier", -- ts/js formatter
 		"stylua", -- lua formatter
-		"eslint_d", -- ts/js linter
 		"black", -- python linter
 		"isort", -- python formatter
-		-- "ruff", -- python linter, formatter
 		"codespell", -- fix common misspellings
 	},
 	-- auto-install configured formatters & linters (with null-ls)

@@ -13,18 +13,20 @@ return {
 		local on_attach = function(client, bufnr)
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 
-			-- LSP keymaps
-			keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts)
-			keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-			keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-			keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-			keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-			keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-			keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
-			keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-			keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-			keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-			keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
+			-- Mappings for LSP
+			if client.name == "eslint" then
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					buffer = bufnr,
+					callback = function()
+						vim.lsp.buf.format({
+							filter = function(c)
+								return c.name == "eslint"
+							end,
+							bufnr = bufnr,
+						})
+					end,
+				})
+			end
 
 			-- ts_ls specific bindings
 			if client.name == "ts_ls" then
@@ -62,7 +64,20 @@ return {
 			bashls = {},
 			marksman = {},
 			pylsp = {},
-			eslint = {},
+			eslint = {
+				root_dir = lspconfig.util.root_pattern(
+					".eslintrc.js",
+					".eslintrc.cjs",
+					".eslintrc.json",
+					".eslintrc.yaml",
+					".eslintrc.yml",
+					"package.json",
+					".git"
+				),
+				settings = {
+					workingDirectory = { mode = "auto" },
+				},
+			},
 
 			-- ✅ Ruff LSP (new style)
 			ruff = {},

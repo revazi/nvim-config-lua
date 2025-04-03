@@ -12,12 +12,6 @@ return {
 		},
 	},
 	cmd = "Telescope",
-	keys = {
-		{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
-		{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
-		{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "Buffers" },
-		{ "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help Tags" },
-	},
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")

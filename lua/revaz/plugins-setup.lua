@@ -1,3 +1,4 @@
+-- Set leader key early
 vim.g.mapleader = ","
 -- BOOTSTRAP lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

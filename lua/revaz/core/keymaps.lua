@@ -1,6 +1,4 @@
--- Set leader key early
-vim.g.mapleader = ","
-
+-- Importing the required modules and setting up key mappings for Neovim.
 local map = require("revaz.core.utils").map
 local toggleNumber = require("revaz.core.utils").toggleNumber
 local changeBackgroundColor = require("revaz.core.utils").changeBackgroundColor
