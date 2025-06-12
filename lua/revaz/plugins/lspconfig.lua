@@ -63,7 +63,18 @@ return {
 			yamlls = {},
 			bashls = {},
 			marksman = {},
-			pylsp = {},
+			pyright = {
+				settings = {
+					pyright = {
+						disableOrganizeImports = true,
+					},
+					python = {
+						analysis = {
+							ignore = { "*" },
+						},
+					},
+				},
+			},
 			eslint = {
 				root_dir = lspconfig.util.root_pattern(
 					".eslintrc.js",
@@ -80,7 +91,11 @@ return {
 			},
 
 			-- ✅ Ruff LSP (new style)
-			ruff = {},
+			ruff = {
+				settings = {
+					logLevel = "Debug",
+				},
+			},
 
 			-- Lua
 			lua_ls = {
