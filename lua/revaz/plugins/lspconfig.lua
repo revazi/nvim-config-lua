@@ -6,14 +6,14 @@ return {
 		"nvimtools/none-ls.nvim",
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap
+
 		local on_attach = function(client, bufnr)
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 
-			-- Mappings for LSP
+			-- eslint format on save (only eslint)
 			if client.name == "eslint" then
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					buffer = bufnr,
@@ -30,31 +30,51 @@ return {
 
 			-- ts_ls specific bindings
 			if client.name == "ts_ls" then
-				keymap.set("n", "<leader>rf", ":lua vim.lsp.buf.rename()<CR>", opts)
-				keymap.set(
-					"n",
-					"<leader>oi",
-					":lua vim.lsp.buf.execute_command({ command = '_typescript.organizeImports' })<CR>",
-					opts
-				)
-				keymap.set(
-					"n",
-					"<leader>ru",
-					":lua vim.lsp.buf.execute_command({ command = '_typescript.removeUnused' })<CR>",
-					opts
-				)
+				keymap.set("n", "<leader>rf", vim.lsp.buf.rename, opts)
+				keymap.set("n", "<leader>oi", function()
+					vim.lsp.buf.code_action({
+						context = { only = { "source.organizeImports.ts" } },
+						diagnostics = vim.diagnostic.get(bufnr),
+					})
+				end, opts)
+
+				keymap.set("n", "<leader>ru", function()
+					vim.lsp.buf.code_action({
+						context = { only = { "source.removeUnused.ts" } },
+						diagnostics = vim.diagnostic.get(bufnr),
+					})
+				end, opts)
 			end
 		end
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- Diagnostic signs
-		local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
-		for type, icon in pairs(signs) do
-			vim.fn.sign_define("DiagnosticSign" .. type, { text = icon, texthl = "DiagnosticSign" .. type })
+		vim.diagnostic.config({
+			virtual_text = false,
+			underline = true,
+			update_in_insert = false,
+			severity_sort = true,
+			signs = {
+				text = {
+					Error = " ",
+					Warn = " ",
+					Hint = "ﴞ ",
+					Info = " ",
+				},
+			},
+		})
+
+		-- Helpers (Neovim-native root detection)
+		local function root_pattern(...)
+			local markers = { ... }
+			return function(bufname)
+				-- bufname can be nil sometimes; fall back to current buffer name
+				local name = bufname or vim.api.nvim_buf_get_name(0)
+				return vim.fs.root(name, markers)
+			end
 		end
 
-		-- LSP servers setup
 		local servers = {
 			html = {},
 			cssls = {},
@@ -63,6 +83,7 @@ return {
 			yamlls = {},
 			bashls = {},
 			marksman = {},
+
 			pyright = {
 				settings = {
 					pyright = {
@@ -75,8 +96,9 @@ return {
 					},
 				},
 			},
+
 			eslint = {
-				root_dir = lspconfig.util.root_pattern(
+				root_dir = root_pattern(
 					".eslintrc.js",
 					".eslintrc.cjs",
 					".eslintrc.json",
@@ -90,14 +112,13 @@ return {
 				},
 			},
 
-			-- ✅ Ruff LSP (new style)
+			-- Ruff
 			ruff = {
 				settings = {
 					logLevel = "Debug",
 				},
 			},
 
-			-- Lua
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -112,7 +133,6 @@ return {
 				},
 			},
 
-			-- Emmet
 			emmet_ls = {
 				filetypes = {
 					"html",
@@ -126,18 +146,21 @@ return {
 				},
 			},
 
-			-- ✅ TypeScript (no tsserver)
+			-- TypeScript (typescript-language-server)
 			ts_ls = {
 				cmd = { "typescript-language-server", "--stdio" },
 				filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-				root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+				root_dir = root_pattern("package.json", "tsconfig.json", ".git"),
 			},
 		}
 
-		for name, config in pairs(servers) do
-			config.capabilities = capabilities
-			config.on_attach = on_attach
-			lspconfig[name].setup(config)
+		for name, cfg in pairs(servers) do
+			cfg.capabilities = capabilities
+			cfg.on_attach = on_attach
+
+			-- New API (Neovim 0.11+ + nvim-lspconfig new style)
+			vim.lsp.config(name, cfg)
+			vim.lsp.enable(name)
 		end
 	end,
 }

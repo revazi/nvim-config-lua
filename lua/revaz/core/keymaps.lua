@@ -90,3 +90,36 @@ map("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
 map("n", "<leader>rf", ":TypescriptRenameFile<CR>")
 map("n", "<leader>oi", ":TypescriptOrganizeImports<CR>")
 map("n", "<leader>ru", ":TypescriptRemoveUnused<CR>")
+
+-- Claude Code Keymaps
+
+-- Open Claude Code in split
+vim.keymap.set("n", "<leader>cc", ":split | terminal claude code chat<CR>", { desc = "Claude Code Chat" })
+
+-- Toggle Claude Code terminal
+vim.keymap.set("n", "<leader>ct", function()
+	local wins = vim.api.nvim_list_wins()
+	for _, win in ipairs(wins) do
+		local buf = vim.api.nvim_win_get_buf(win)
+		local bufname = vim.api.nvim_buf_get_name(buf)
+		if string.find(bufname, "claude") then
+			vim.api.nvim_win_close(win, true)
+			return
+		end
+	end
+	vim.cmd("split | terminal claude code chat")
+end, { desc = "Toggle Claude Code" })
+
+-- Ask Claude about selected code (visual mode)
+vim.keymap.set("v", "<leader>ca", function()
+	local start_pos = vim.fn.getpos("'<")
+	local end_pos = vim.fn.getpos("'>")
+	local lines = vim.fn.getline(start_pos[2], end_pos[2])
+	vim.fn.writefile(lines, "/tmp/claude_selection.txt")
+	vim.cmd("split | terminal claude code chat --file /tmp/claude_selection.txt")
+end, { desc = "Ask Claude about selection" })
+
+-- Ask Claude about current file
+vim.keymap.set("n", "<leader>cf", function()
+	vim.cmd("split | terminal claude code chat --file " .. vim.fn.expand("%:p"))
+end, { desc = "Ask Claude about file" })
