@@ -1,3 +1,13 @@
+-- UI fixes for terminal
+vim.cmd([[
+  if exists('$TMUX')
+    let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+  endif
+  set termguicolors
+  set background=dark
+]])
+
 -- Our core/utils.lua file
 local M = {}
 local opt = vim.opt
@@ -32,10 +42,10 @@ function M.changeBackgroundColor()
 	local background = opt.background:get()
 	if background == "dark" then
 		opt.background = "light"
-		vim.cmd("colorscheme tokyonight-day") -- Set the light theme
+		vim.cmd("colorscheme gruvbox-material") -- Set the light theme
 	else
 		opt.background = "dark"
-		vim.cmd("colorscheme tokyonight") -- Set the dark theme
+		vim.cmd("colorscheme gruvbox-material") -- Set the dark theme
 	end
 end
 
