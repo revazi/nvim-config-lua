@@ -22,13 +22,16 @@ mason.setup()
 mason_lspconfig.setup({
 	-- list of servers for mason to install
 	ensure_installed = {
-		"tsserver", -- ts/js
+		"ts_ls", -- ts/js
 		"html", -- html
 		"cssls", -- css
 		"tailwindcss", -- tailwind
+		"ansiblels", -- ansible
 		"lua_ls", -- lua
+		"eslint", -- ts/js
+		"biome", -- Patholux formatter/linter
 		"emmet_ls", -- css, js, ts, html
-		-- "ruff_lsp", -- python
+		"ruff", -- python
 		"dockerls", -- docker
 		"yamlls", -- yaml
 		"bashls", -- bash
@@ -43,13 +46,14 @@ mason_null_ls.setup({
 	ensure_installed = {
 		"prettier", -- ts/js formatter
 		"stylua", -- lua formatter
-		"eslint_d", -- ts/js linter
-		"flake8", -- python linter
-		"black", -- python linter
-		"isort", -- python formatter
-		-- "ruff", -- python linter, formatter
+		"ruff",
 		"codespell", -- fix common misspellings
+		"djlint",
+		"editorconfig_checker",
+		"dotenv_linter",
+		"ansiblelint",
 	},
-	-- auto-install configured formatters & linters (with null-ls)
-	automatic_installation = true,
+	-- Install only the explicitly listed tools; code-action sources such as
+	-- gitsigns are not Mason packages.
+	automatic_installation = false,
 })
