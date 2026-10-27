@@ -8,53 +8,50 @@ return {
 	},
 	config = function()
 		local null_ls = require("null-ls")
-		local methods = null_ls.methods
-		local helpers = require("null-ls.helpers")
-		local utils = require("null-ls.utils")
+    local methods = null_ls.methods
+    local helpers = require("null-ls.helpers")
+    local utils   = require("null-ls.utils")
 
 		local function has_biome_config(bufnr)
 			local name = vim.api.nvim_buf_get_name(bufnr)
 			return vim.fs.root(name, { "biome.json", "biome.jsonc" }) ~= nil
 		end
 
-		-- Ruff: first pass (lint fixes)
-		local ruff_fix = {
-			name = "ruff_fix",
-			method = methods.FORMATTING,
-			filetypes = { "python" },
-			generator = helpers.formatter_factory({
-				command = "ruff",
-				args = function(params)
-					return {
-						"check",
-						"--fix",
-						"--stdin-filename",
-						params.bufname,
-						"-", -- read from stdin
-					}
-				end,
-				to_stdin = true,
-			}),
-		}
+    -- Ruff: first pass (lint fixes)
+    local ruff_fix = {
+      name      = "ruff_fix",
+      method    = methods.FORMATTING,
+      filetypes = { "python" },
+      generator = helpers.formatter_factory({
+        command = "ruff",
+        args    = function(params)
+          return {
+            "check", "--fix",
+            "--stdin-filename", params.bufname,
+            "-",          -- read from stdin
+          }
+        end,
+        to_stdin = true,
+      }),
+    }
 
-		-- Ruff: second pass (Black-style formatting)
-		local ruff_fmt = {
-			name = "ruff_fmt",
-			method = methods.FORMATTING,
-			filetypes = { "python" },
-			generator = helpers.formatter_factory({
-				command = "ruff",
-				args = function(params)
-					return {
-						"format",
-						"--stdin-filename",
-						params.bufname,
-						"-", -- read from stdin
-					}
-				end,
-				to_stdin = true,
-			}),
-		}
+    -- Ruff: second pass (Black-style formatting)
+    local ruff_fmt = {
+      name      = "ruff_fmt",
+      method    = methods.FORMATTING,
+      filetypes = { "python" },
+      generator = helpers.formatter_factory({
+        command = "ruff",
+        args    = function(params)
+          return {
+            "format",
+            "--stdin-filename", params.bufname,
+            "-",  -- read from stdin
+          }
+        end,
+        to_stdin = true,
+      }),
+    }
 
 		-- 1) enable debug logging
 		null_ls.setup({
@@ -64,8 +61,8 @@ return {
 				-- extras plugin modules:
 				-- require("none-ls.diagnostics.ruff"),
 				-- require("none-ls.formatting.ruff"),
-				ruff_fix,
-				ruff_fmt,
+        ruff_fix,
+        ruff_fmt,
 
 				-- your other formatters/linters:
 				null_ls.builtins.formatting.prettier,
